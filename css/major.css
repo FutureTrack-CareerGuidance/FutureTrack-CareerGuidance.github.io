@@ -1,0 +1,638 @@
+/* ===== VARIABLES ===== */
+:root {
+    /* Light mode colors */
+    --primary-color: #3a86ff;
+    --secondary-color: #8338ec;
+    --accent-color: #ff006e;
+    --background-color: #ffffff;
+    --card-background: #f8f9fa;
+    --text-color: #333333;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --header-background: #f1f5f9;
+    --footer-background: #1e293b;
+    --footer-text: #f8f9fa;
+    --button-hover: #ebf5ff;
+    --highlight-color: #38bdf8;
+}
+
+.dark-mode {
+    /* Dark mode colors */
+    --primary-color: #60a5fa;
+    --secondary-color: #a78bfa;
+    --accent-color: #f472b6;
+    --background-color: #111827;
+    --card-background: #1f2937;
+    --text-color: #f3f4f6;
+    --border-color: #374151;
+    --shadow-color: rgba(0, 0, 0, 0.25);
+    --header-background: #1e293b;
+    --footer-background: #0f172a;
+    --footer-text: #f8f9fa;
+    --button-hover: #2d3748;
+    --highlight-color: #38bdf8;
+}
+
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+section {
+    padding: 4rem 0;
+}
+
+ul {
+    list-style-position: inside;
+    margin-bottom: 1rem;
+}
+
+/* ===== HEADER STYLES ===== */
+header {
+    background-color: var(--header-background);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 0;
+}
+
+.tagline {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s;
+}
+
+.nav-link:hover:after, .nav-link.active:after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: var(--primary-color);
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--button-hover);
+}
+
+/* ===== INTRO SECTION ===== */
+.intro {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.intro h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ===== CONTENT SECTION STYLES ===== */
+.content-section {
+    padding: 4rem 0;
+}
+
+#content-container {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.major-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.major-header h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.major-header h3 {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+.content-block {
+    margin-bottom: 3rem;
+}
+
+.content-block h3 {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.content-block p {
+    margin-bottom: 1rem;
+}
+
+/* ===== SALARY INFO STYLES ===== */
+.salary-info {
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.salary-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 0.8rem;
+}
+
+.salary-item i {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+}
+
+.salary-item em {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ===== ROLES STYLES ===== */
+.roles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.role-card {
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.role-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px var(--shadow-color);
+}
+
+.role-card h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+}
+
+.role-card i {
+    color: var(--accent-color);
+}
+
+.role-context {
+    font-size: 0.9rem;
+    background-color: rgba(58, 134, 255, 0.1);
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.role-card ul {
+    padding-left: 1rem;
+    list-style-type: disc;
+}
+
+.role-card li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== ROADMAP STYLES ===== */
+.roadmap-section {
+    position: relative;
+}
+
+.roadmap-section::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background-color: var(--border-color);
+}
+
+.step {
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.step::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+.step h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.skill-tag {
+    background-color: var(--background-color);
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.skill-tag i {
+    color: var(--accent-color);
+}
+
+/* ===== MARKET ANALYSIS STYLES ===== */
+.market-data {
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    margin-bottom: 2rem;
+}
+
+.market-data h4 {
+    color: var(--primary-color);
+    margin: 1.5rem 0 0.8rem 0;
+}
+
+.market-data h4:first-child {
+    margin-top: 0;
+}
+
+.regions-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.region-card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.region-card h4 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.chart-container {
+    height: auto;
+    margin-bottom: 2rem;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trend-item {
+    margin-bottom: 2rem;
+}
+
+.market-chart-img {
+    max-width: 100%;
+    width: 100%; /* Ensures the image fills the container width */
+    height: auto;
+    border-radius: 4px;
+    display: block;
+}
+
+.trend-item h4 {
+    color: var(--secondary-color);
+    margin-bottom: 0.8rem;
+}
+
+.trends-list {
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.skills-future-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-future-card {
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: transform 0.3s;
+}
+
+.skill-future-card:hover {
+    transform: translateY(-5px);
+}
+
+.skill-future-card h4 {
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.skill-future-card i {
+    color: var(--accent-color);
+}
+
+/* ===== FOOTER STYLES ===== */
+footer {
+    background-color: var(--footer-background);
+    color: var(--footer-text);
+    padding: 4rem 0 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.footer-logo h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.footer-logo p {
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+.footer-links h3, .footer-newsletter h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: var(--footer-text);
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
+.footer-newsletter p {
+    margin-bottom: 1rem;
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+.placeholder-form {
+    display: flex;
+}
+
+.placeholder-form input {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.placeholder-form button {
+    padding: 0 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.3s;
+}
+
+.placeholder-form button:hover {
+    background-color: var(--secondary-color);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.placeholder-link {
+    cursor: pointer;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+    .logo-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .nav-menu {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .roles-container, 
+    .regions-container, 
+    .skills-future-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .placeholder-form {
+        flex-direction: column;
+    }
+    
+    .placeholder-form input {
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .placeholder-form button {
+        border-radius: 4px;
+        width: 100%;
+        padding: 0.8rem;
+    }
+}
+
+/* Newsletter subscription styles */
+.subscription-message {
+    margin-top: 10px;
+    display: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.footer-newsletter form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.footer-newsletter form input[type="email"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.footer-newsletter form button {
+    padding: 10px 15px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.footer-newsletter form button:hover {
+    background-color: #3a7bc8;
+}
+
+/* Make the form display as a row instead of column for better layout */
+@media (min-width: 768px) {
+    .footer-newsletter form {
+        flex-direction: row;
+    }
+}
