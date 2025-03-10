@@ -124,6 +124,150 @@ header h1 {
     background-color: var(--button-hover);
 }
 
+/* ===== WHY SECTION STYLES ===== */
+.why-section {
+    padding: 4rem 0;
+    background-color: var(--card-background);
+    position: relative;
+}
+
+.why-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.why-section h2:after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.slider-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 300px;
+}
+
+.slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.slide-content {
+    text-align: center;
+    max-width: 600px;
+}
+
+.slide-content h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.slide-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.prev-btn, .next-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    color: var(--primary-color);
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    margin: 0 1rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot:hover {
+    transform: scale(1.2);
+}
+
+.dot.active {
+    background-color: var(--primary-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .slide {
+        padding: 1.5rem;
+    }
+    
+    .slide-content h3 {
+        font-size: 1.6rem;
+    }
+    
+    .slide-content p {
+        font-size: 1rem;
+    }
+    
+    .slider-wrapper {
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide {
+        padding: 1rem;
+    }
+    
+    .slide-content h3 {
+        font-size: 1.4rem;
+    }
+    
+    .slider-wrapper {
+        height: 400px;
+    }
+}
+
 /* ===== INTRO SECTION ===== */
 .intro {
     padding: 4rem 0;
