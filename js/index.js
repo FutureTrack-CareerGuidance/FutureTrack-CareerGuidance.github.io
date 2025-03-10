@@ -229,3 +229,87 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+// Add this to your existing index.js file
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Slider functionality
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentSlide = 0;
+    
+    // Set up initial state
+    function initSlider() {
+        updateSlider();
+        setupAutoplay();
+    }
+    
+    // Update slider position and active dot
+    function updateSlider() {
+        sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Update active dot
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+    
+    // Navigate to next slide
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateSlider();
+    }
+    
+    // Navigate to previous slide
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        updateSlider();
+    }
+    
+    // Set up automatic slideshow
+    let autoplayInterval;
+    function setupAutoplay() {
+        autoplayInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    }
+    
+    // Reset autoplay timer when manually changing slides
+    function resetAutoplay() {
+        clearInterval(autoplayInterval);
+        setupAutoplay();
+    }
+    
+    // Event listeners for controls
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoplay();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoplay();
+    });
+    
+    // Event listeners for dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateSlider();
+            resetAutoplay();
+        });
+    });
+    
+    // Pause autoplay when hovering over slider
+    sliderWrapper.addEventListener('mouseenter', () => {
+        clearInterval(autoplayInterval);
+    });
+    
+    sliderWrapper.addEventListener('mouseleave', () => {
+        setupAutoplay();
+    });
+    
+    // Initialize the slider
+    initSlider();
+});
